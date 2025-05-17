@@ -9,7 +9,9 @@ from dotenv import load_dotenv
 from helpers import apology, login_required, lookup, usd
 
 # Load API key from .env file
+from dotenv import load_dotenv
 load_dotenv()
+
 
 # Configure application
 app = Flask(__name__)
