@@ -35,7 +35,7 @@ def login_required(f):
 def lookup(symbol):
     """Look up quote for symbol using Alpha Vantage."""
     # Hardcoded API key
-    api_key = "TJ10JLDBL9DLDN1D"
+    api_key = os.getenv("API_KEY")
 
     try:
         url = (
