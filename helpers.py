@@ -34,8 +34,10 @@ def login_required(f):
 
 def lookup(symbol):
     """Look up quote for symbol using Alpha Vantage."""
-    # Hardcoded API key
     api_key = os.getenv("API_KEY")
+
+    if not api_key:
+        return None
 
     try:
         url = (
@@ -47,11 +49,11 @@ def lookup(symbol):
         data = response.json()
 
         quote = data.get("Global Quote")
-        if not quote:
+        if not quote or not quote.get("05. price") or not quote.get("01. symbol"):
             return None
 
         return {
-            "name": symbol.upper(),  # Alpha Vantage doesn't return company name
+            "name": symbol.upper(),  # Alpha Vantage doesn't provide company name here
             "price": float(quote["05. price"]),
             "symbol": quote["01. symbol"]
         }
