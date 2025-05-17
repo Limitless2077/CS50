@@ -193,7 +193,7 @@ def quote():
     if not stock:
         return apology("invalid symbol", 400)
 
-    return render_template("quoted.html", name=stock["name"], price=stock["price"], symbol=stock["symbol"])
+   return render_template("quoted.html", stock=stock)
 
 
 @app.route("/history")
