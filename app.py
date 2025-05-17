@@ -8,11 +8,18 @@ from dotenv import load_dotenv
 
 from helpers import apology, login_required, lookup, usd
 
-# Load API key from .env file
-from dotenv import load_dotenv
-load_dotenv()
+# Try to import load_dotenv; skip if not available (like on check50)
+try:
+    from dotenv import load_dotenv
+except ImportError:
+    load_dotenv = None
 
+from helpers import apology, login_required, lookup, usd
 
+# Load API key from .env file only if load_dotenv is available
+if load_dotenv:
+    load_dotenv()
+    
 # Configure application
 app = Flask(__name__)
 
