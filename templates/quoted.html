@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}Quote Result{% endblock %}
+
+{% block main %}
+  <h1>Quote Result</h1>
+  <div class="card mx-auto" style="width: 18rem;">
+    <div class="card-body text-start">
+      <h5 class="card-title">{{ stock.name }} ({{ stock.symbol }})</h5>
+      <p class="card-text">
+        Current Price: <strong>{{ stock.price | usd }}</strong>
+      </p>
+    </div>
+  </div>
+{% endblock %}

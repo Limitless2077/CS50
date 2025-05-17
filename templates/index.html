@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}Apology{% endblock %}
+
+{% block main %}
+  <h1>Your Portfolio</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Symbol</th>
+        <th scope="col">Name</th>
+        <th scope="col">Shares</th>
+        <th scope="col">Price</th>
+        <th scope="col">Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for stock in portfolio %}
+        <tr>
+          <td>{{ stock.symbol }}</td>
+          <td>{{ stock.name }}</td>
+          <td>{{ stock.shares }}</td>
+          <td>{{ stock.price | usd }}</td>
+          <td>{{ stock.value | usd }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3"></td>
+        <th>Cash</th>
+        <th>{{ cash | usd }}</th>
+      </tr>
+      <tr>
+        <td colspan="3"></td>
+        <th>Total</th>
+        <th>{{ total | usd }}</th>
+      </tr>
+    </tfoot>
+  </table>
+{% endblock %}
